@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日本正品直营</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { gold: '#b8964f' }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white text-gray-900 pb-20">
+
+  <!-- Tailwind dynamic class safelist (hidden) -->
+  <div class="hidden bg-gold text-white border-gold border-gray-200 text-gray-500 flex-shrink-0 rounded-full whitespace-nowrap aspect-square object-contain leading-none text-gray-300"></div>
+
+  <!-- Header -->
+  <header class="border-b border-gray-100 px-4 py-4">
+    <div class="max-w-6xl mx-auto flex items-start justify-between">
+      <div>
+        <div class="text-xs text-gold tracking-widest mb-0.5 font-light" data-i18n="tagline">JAPAN OFFICIAL</div>
+        <div class="text-xl font-medium" data-i18n="siteTitle">日本正品直营</div>
+        <div class="text-xs text-gray-400 mt-0.5 font-light" data-i18n="siteSubtitle">正规代理商直接进货·品质保证</div>
+      </div>
+      <!-- Language Switcher -->
+      <div class="flex gap-0.5 mt-1 flex-shrink-0">
+        <button onclick="switchLang('zh')" data-lang-btn="zh" class="text-xs px-2 py-1 rounded font-medium text-gold">中文</button>
+        <button onclick="switchLang('ja')" data-lang-btn="ja" class="text-xs px-2 py-1 rounded font-medium text-gray-300">日本語</button>
+        <button onclick="switchLang('en')" data-lang-btn="en" class="text-xs px-2 py-1 rounded font-medium text-gray-300">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Trust Banner -->
+  <div class="bg-gray-50 border-b border-gray-100 px-4 py-4">
+    <div class="max-w-6xl mx-auto space-y-1">
+      <div class="flex items-center gap-2 text-sm text-gray-700">
+        <span class="text-gold flex-shrink-0">✓</span><span data-i18n="trust1">日本正规代理商直接进货，100% 正品保证</span>
+      </div>
+      <div class="flex items-center gap-2 text-sm text-gray-700">
+        <span class="text-gold flex-shrink-0">✓</span><span data-i18n="trust2">可提供日本正规购买凭证</span>
+      </div>
+      <div class="flex items-center gap-2 text-sm text-gray-700">
+        <span class="text-gold flex-shrink-0">✓</span><span data-i18n="trust3">价格低于日本市场定价</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category Filter -->
+  <div class="sticky top-0 bg-white border-b border-gray-100 z-40">
+    <div class="max-w-6xl mx-auto px-4">
+      <div id="category-buttons" class="flex gap-2 overflow-x-auto py-3 no-scrollbar">
+        <!-- Dynamically rendered -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Count -->
+  <div class="max-w-6xl mx-auto px-4 pt-4 pb-1">
+    <p id="product-count" class="text-xs text-gray-400"></p>
+  </div>
+
+  <!-- Product Grid -->
+  <main class="max-w-6xl mx-auto px-4 py-2">
+    <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+      <div class="col-span-full py-16 text-center text-gray-400 text-sm" data-i18n="loading">加载中…</div>
+    </div>
+  </main>
+
+  <!-- How to Buy -->
+  <section class="mt-8 bg-gray-50 border-t border-b border-gray-100 px-4 py-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-sm font-medium text-center tracking-widest text-gray-500 mb-6" data-i18n="howToBuyTitle">购买流程</h2>
+      <div class="grid grid-cols-4 gap-3 text-center">
+        <div>
+          <div class="text-2xl mb-2">💬</div>
+          <div class="text-xs font-medium" data-i18n="step1Title">添加微信</div>
+          <div class="text-xs text-gray-400 mt-1" data-i18n="step1Sub">告知来意</div>
+        </div>
+        <div>
+          <div class="text-2xl mb-2">🛍️</div>
+          <div class="text-xs font-medium" data-i18n="step2Title">选择商品</div>
+          <div class="text-xs text-gray-400 mt-1" data-i18n="step2Sub">确认库存</div>
+        </div>
+        <div>
+          <div class="text-2xl mb-2">💴</div>
+          <div class="text-xs font-medium" data-i18n="step3Title">转账付款</div>
+          <div class="text-xs text-gray-400 mt-1" data-i18n="step3Sub">银行转账</div>
+        </div>
+        <div>
+          <div class="text-2xl mb-2">📦</div>
+          <div class="text-xs font-medium" data-i18n="step4Title">发货配送</div>
+          <div class="text-xs text-gray-400 mt-1" data-i18n="step4Sub">全国可达</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Trust -->
+  <section class="px-4 py-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-sm font-medium tracking-widest text-gray-500 mb-4" data-i18n="aboutTitle">关于我们</h2>
+      <p class="text-sm text-gray-600 leading-relaxed mb-6" data-i18n="aboutText">
+        我们常驻日本，从官方授权的正规代理商直接进货销售。所有商品均为日本市场流通的正规品，可提供购买凭证。如有任何疑问，欢迎通过微信联系我们。
+      </p>
+
+      <!-- WeChat Info -->
+      <div class="border border-gray-100 rounded-lg p-4 mb-6">
+        <div class="text-xs text-gray-400 mb-3" data-i18n="wechatLabel">微信联系方式</div>
+        <div id="wechat-qr-wrap" class="hidden flex-col items-center mb-4">
+          <img id="wechat-qr" src="" alt="WeChat QR" class="w-36 h-36 object-contain">
+          <div class="text-xs text-gray-400 mt-2" data-i18n="scanQr">扫描二维码添加微信</div>
+        </div>
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <div class="text-sm font-medium" id="wechat-display">YOUR_WECHAT_ID</div>
+            <div class="text-xs text-gray-400 mt-1" data-i18n="wechatNote">添加时请注明"日本商品"</div>
+          </div>
+          <button onclick="copyWeChat()" id="copy-btn-about"
+            class="flex-shrink-0 text-xs border border-gold text-gold px-3 py-2 rounded font-medium transition-colors"
+            data-i18n="copyBtn">
+            复制微信号
+          </button>
+        </div>
+      </div>
+
+      <!-- Brands -->
+      <div>
+        <div class="text-xs text-gray-400 mb-3" data-i18n="brandsLabel">经营品牌</div>
+        <div id="brand-list" class="flex flex-wrap gap-2">
+          <!-- Dynamically rendered -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-100 px-4 py-6 text-center">
+    <div class="text-xs text-gray-300" data-i18n="footerText">日本正品直营</div>
+  </footer>
+
+  <!-- Fixed Bottom CTA -->
+  <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 px-4 py-3 z-50">
+    <div class="max-w-6xl mx-auto flex gap-3">
+      <button onclick="copyWeChat()" id="copy-btn-fixed"
+        class="flex-1 border border-gold text-gold text-sm py-2.5 rounded font-medium transition-colors"
+        data-i18n="ctaCopy">
+        复制微信号
+      </button>
+      <button onclick="openWeChat()"
+        class="flex-1 bg-gold text-white text-sm py-2.5 rounded font-medium transition-opacity active:opacity-75"
+        data-i18n="ctaContact">
+        微信咨询
+      </button>
+    </div>
+  </div>
+
+  <!-- Product Inquiry Toast -->
+  <div id="product-toast" class="fixed left-4 right-4 bg-gray-900 text-white rounded-xl px-4 py-3 z-[60] hidden" style="bottom: 72px">
+    <div class="text-xs text-gray-400 mb-1" data-i18n="toastCopied">商品名已复制</div>
+    <div id="toast-product-name" class="text-sm font-medium mb-3 truncate"></div>
+    <button onclick="openWeChat()"
+      class="w-full text-white text-sm py-2.5 rounded-lg font-medium active:opacity-75"
+      style="background-color: #07C160"
+      data-i18n="toastOpen">
+      打开微信，告知商品名称
+    </button>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
