@@ -148,7 +148,7 @@ function productCard(p) {
   const name = currentLang === 'ja' ? p.name_ja : (p.name_zh || p.name_ja);
   const regularPrice = p.price_jpy ? Number(p.price_jpy) : null;
   const sellingPrice = p.selling_price_jpy ? Number(p.selling_price_jpy) : null;
-  const img = p.image_url;
+  const img = p.image_url?.startsWith('/') ? '.' + p.image_url : p.image_url;
 
   const discountPct = (regularPrice && sellingPrice && sellingPrice < regularPrice)
     ? Math.round((1 - sellingPrice / regularPrice) * 100)
